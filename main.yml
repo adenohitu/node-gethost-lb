@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-gethost
+  labels:
+    app: gethost-pod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gethost-pod
+  template:
+    metadata:
+      labels:
+        app: gethost-pod
+    spec:
+      containers:
+        - name: gethost-pod
+          image: adenohitu/node-gethost
+          ports:
+            - containerPort: 3000
